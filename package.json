@@ -16,7 +16,8 @@
     "vue.js component",
     "ckeditor",
     "ckeditor5",
-    "ckeditor 5"
+    "ckeditor 5",
+    "vue2"
   ],
   "devDependencies": {
     "@babel/core": "^7.0.0",
