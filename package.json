@@ -1,5 +1,5 @@
 {
-  "name": "dsaouda-ck-vue2",
+  "name": "@dsaouda/ckeditor-vue2",
   "version": "1.0.0",
   "main": "dist/ckeditor.js",
   "description": "Fork to 'Official Vue.js 3+ component for CKEditor 5 – the best browser-based rich text editor' but to vue2",
