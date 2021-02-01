@@ -17,7 +17,7 @@
 	</style>
 </head>
 <body>
-	<script src="../node_modules/vue/dist/vue.global.js"></script>
+	<script src="../node_modules/vue/dist/vue.min.js"></script>
 	<script src="../node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
 	<script src="../dist/ckeditor.js"></script>
 
@@ -46,42 +46,77 @@
 	</div>
 
 	<script>
-		window.app = Vue.createApp(
-			{
-				data() {
-					return {
-						editor: ClassicEditor,
-						editorData: '<p>Hello world!</p>',
-						editorConfig: { toolbar: [ 'heading', '|', 'bold', 'italic' ] },
-						editorDisabled: false
-					};
+		var app = new Vue({
+			el: '#app',			 	
+			data() {
+				return {
+					editor: ClassicEditor,
+					editorData: '<p>Hello world!</p>',
+					editorConfig: { toolbar: [ 'heading', '|', 'bold', 'italic' ] },
+					editorDisabled: false
+				};
+			},
+			methods: {
+				toggleEditorDisabled() {
+					this.editorDisabled = !this.editorDisabled;
 				},
-				methods: {
-					toggleEditorDisabled() {
-						this.editorDisabled = !this.editorDisabled;
-					},
-					onEditorReady( editor ) {
-						window.editor = editor;
-
-						console.log( 'Editor is ready.', { editor } );
-					},
-					onEditorFocus( event, editor ) {
-						console.log( 'Editor focused.', { event, editor } );
-					},
-					onEditorBlur( event, editor ) {
-						console.log( 'Editor blurred.', { event, editor } );
-					},
-					onEditorInput( data, event, editor ) {
-						console.log( 'Editor data input.', { event, editor, data } );
-					},
-					onEditorDestroy( editor ) {
-						console.log( 'Editor destroyed.', { editor } );
-					}
+				onEditorReady( editor ) {
+					window.editor = editor;
+	
+					console.log( 'Editor is ready.', { editor } );
+				},
+				onEditorFocus( event, editor ) {
+					console.log( 'Editor focused.', { event, editor } );
+				},
+				onEditorBlur( event, editor ) {
+					console.log( 'Editor blurred.', { event, editor } );
+				},
+				onEditorInput( data, event, editor ) {
+					console.log( 'Editor data input.', { event, editor, data } );
+				},
+				onEditorDestroy( editor ) {
+					console.log( 'Editor destroyed.', { editor } );
 				}
 			}
-		);
+		});
+		
+			// window.app = Vue.createApp(
+			// 	{
+			// 		data() {
+			// 			return {
+			// 				editor: ClassicEditor,
+			// 				editorData: '<p>Hello world!</p>',
+			// 				editorConfig: { toolbar: [ 'heading', '|', 'bold', 'italic' ] },
+			// 				editorDisabled: false
+			// 			};
+			// 		},
+			// 		methods: {
+			// 			toggleEditorDisabled() {
+			// 				this.editorDisabled = !this.editorDisabled;
+			// 			},
+			// 			onEditorReady( editor ) {
+			// 				window.editor = editor;
+			
+			// 				console.log( 'Editor is ready.', { editor } );
+			// 			},
+			// 			onEditorFocus( event, editor ) {
+			// 				console.log( 'Editor focused.', { event, editor } );
+			// 			},
+			// 			onEditorBlur( event, editor ) {
+			// 				console.log( 'Editor blurred.', { event, editor } );
+			// 			},
+			// 			onEditorInput( data, event, editor ) {
+			// 				console.log( 'Editor data input.', { event, editor, data } );
+			// 			},
+			// 			onEditorDestroy( editor ) {
+			// 				console.log( 'Editor destroyed.', { editor } );
+			// 			}
+			// 		}
+			// 	}
+			// );
 
-		app.use( CKEditor ).mount( '#app' );
+		Vue.use(CKEditor);
+		app.$mount( '#app' );
 	</script>
 </body>
 

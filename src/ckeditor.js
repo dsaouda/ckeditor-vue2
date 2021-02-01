@@ -5,7 +5,6 @@
 
 /* global console */
 
-import { h } from 'vue';
 import { debounce } from 'lodash-es';
 
 const INPUT_EVENT_DEBOUNCE_WAIT = 300;
@@ -13,7 +12,7 @@ const INPUT_EVENT_DEBOUNCE_WAIT = 300;
 export default {
 	name: 'ckeditor',
 
-	render() {
+	render(h) {
 		return h( this.tagName );
 	},
 
