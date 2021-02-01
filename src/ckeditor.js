@@ -22,6 +22,10 @@ export default {
 	},
 
 	props: {
+		className: {
+			type: Array,
+			default: []
+		},
 		editor: {
 			type: Function,
 			default: null
@@ -76,12 +80,19 @@ export default {
 
 				this.$_setUpEditorEvents();
 
+				// allow add className
+				this.className.forEach(x => {
+					this.$el.nextElementSibling.getElementsByClassName('ck ck-editor__main')[0].classList.add(x);
+				});
+
 				// Let the world know the editor is ready.
 				this.$emit( 'ready', editor );
 			} )
 			.catch( error => {
 				console.error( error );
 			} );
+
+			
 	},
 
 	beforeUnmount() {
